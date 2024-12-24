@@ -9,8 +9,10 @@ import {screenWidth} from "@/app/_layout";
 import {LinearGradient} from "expo-linear-gradient";
 import {Colors} from "@/assets/colors/colors";
 import {router} from "expo-router";
+import {useStore} from "@/utils/store/store";
 
 const DoctorDetails = () => {
+    const {selectedDoctor, setSelectedDoctor} = useStore(state => state)
     const animValue = useRef(new Animated.Value(0)).current;
     const searchParams = useSearchParams(); // This returns URLSearchParams
     // Extract and parse the 'doctor' parameter
@@ -27,7 +29,7 @@ const DoctorDetails = () => {
                 <View style={[styles.topBar]}>
                     <AntDesign onPress={() => {
                         Animated.spring(animValue, {toValue: -2, useNativeDriver: true, stiffness: 100}).start();
-                        setTimeout(()=>{router.back()},150)
+                        setTimeout(()=>{router.navigate('/(mainTabs)/(doctorListing)')},150)
                     }} size={20} style={styles.back} name={'arrowleft'}/>
                     <Text style={styles.headerText}>Doctor's Profile</Text>
                 </View>
@@ -68,9 +70,19 @@ const DoctorDetails = () => {
                                 fontWeight: '500'
                             }]}>{parsedDoctor.description}</Text>
                         </View>
-                        <TouchableOpacity style={styles.button}>
-                            <Text style={styles.buttonText}>Consult now</Text>
-                        </TouchableOpacity>
+                        {
+                            selectedDoctor?.id === parsedDoctor.id ?
+                                <View style={[styles.button,{backgroundColor: '#90EE90'}]}>
+                                    <Text style={[styles.buttonText]}>Added</Text>
+                                </View>
+                                :
+                                <TouchableOpacity onPress={()=>{
+                                    setSelectedDoctor(parsedDoctor)
+                                }} style={styles.button}>
+                                    <Text style={styles.buttonText}>Consult now</Text>
+                                </TouchableOpacity>
+                        }
+
                     </View>
                 </Animated.View>
             </View>

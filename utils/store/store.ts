@@ -17,7 +17,7 @@ type Store = {
     age:string,
 }
 const avatar  = createAvatar(lorelei, {
-    seed: ''
+    seed: 'Farmaan Malik'
 });
 
 export const useStore = create<Store>((setState,getState) => ({

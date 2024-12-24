@@ -252,6 +252,7 @@ const DoctorListing = () => {
     const [showModes, setShowModes] = useState(false)
     const animValue = useRef(new Animated.Value(0)).current
     const {setSelectedDoctor:setDoctor, selectedDoctor} = useStore(state => state)
+
     const useFilter = (value: string) => {
         if (value.trim() === '') {
             setData(doctors)
