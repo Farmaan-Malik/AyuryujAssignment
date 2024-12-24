@@ -1,60 +1,29 @@
 import React, {useEffect, useRef} from 'react';
 import {
     View,
-
-    Animated,
-    useAnimatedValue,
     ScrollView
 } from 'react-native';
 import {SafeAreaView} from "react-native-safe-area-context";
 import {globalStyles} from "@/assets/styles/globalStyles";
 import SectionHeader from "@/components/sectionHeader";
 import HomeTiles from "@/components/homeTiles";
-import {screenWidth} from "@/app/_layout";
 import AdView from "@/components/adView";
+import ConsultTile from "@/components/consultTile";
+import {router} from "expo-router";
 
 
 const index = () => {
-    const appear = useAnimatedValue(0)
-    const disappear = useAnimatedValue(1)
-    const sectionData = [
-        {
-            title: "Consult a Doctor",
-            data: [
-                {id: "1", name: "General Physician", description: "Get a consultation for common ailments."},
-                {id: "2", name: "Pediatrician", description: "Specialized care for your children."},
-                {id: "3", name: "Dermatologist", description: "Skin, hair, and nail concerns."},
-                {id: "4", name: "Psychiatrist", description: "Mental health and emotional well-being."},
-            ],
-        },
-        {
-            title: "Book Tests",
-            data: [
-                {id: "5", name: "Blood Test", description: "Comprehensive blood panel testing."},
-                {id: "6", name: "X-Ray", description: "Radiographic imaging for diagnosis."},
-                {id: "7", name: "MRI Scan", description: "Detailed imaging of organs and tissues."},
-                {id: "8", name: "COVID-19 Test", description: "RT-PCR and rapid antigen tests available."},
-            ],
-        },
-    ];
-
-
-    useEffect(() => {
-        Animated.timing(appear, {toValue: 1, useNativeDriver: true, duration: 3000}).start();
-        Animated.timing(disappear, {toValue: 0, useNativeDriver: true, duration: 3000}).start();
-
-    }, []);
     return (
         <SafeAreaView style={globalStyles.container}>
-            <View style={[globalStyles.mainView]}>
-                <ScrollView>
+            <View style={[globalStyles.mainView,{height:'100%'}]}>
+                <ScrollView contentContainerStyle={{paddingBottom:150}}>
                     <View style={{
                         display: 'flex',
                         flex:1,
                         flexDirection: 'row',
                         flexWrap: 'wrap',
                         justifyContent: 'space-evenly',
-                        // borderWidth: 1
+
                     }}>
                         <HomeTiles image={require('@/assets/images/consultation.png')} headerText={"Online \nConsultation"}/>
                         <HomeTiles image={require('@/assets/images/orderMeds.png')} headerText={"Order \nMedication"}/>
@@ -72,50 +41,28 @@ const index = () => {
                     }]}>
                         <AdView/>
                     </View>
-                    <SectionHeader onClick={() => {/*Todo*/
+                    <SectionHeader onClick={() => {
+                        router.navigate('/(mainTabs)/(doctorListing)')
                     }} title='Consult a Doctor'/>
-                    <View style={{flex: 1}}>
-
+                    <View style={{flex: 1,flexDirection:'row'}}>
+                        <ConsultTile title={'Dentist'} onPress={() => router.push({
+                                    pathname: '/(mainTabs)/(doctorListing)',
+                                    params: {filter:'Dentist'}
+                                })}
+                        image={require('@/assets/images/DentistFilter.png')}/>
+                        <ConsultTile title={'Pediatrician'} onPress={() => router.push({
+                                    pathname: '/(mainTabs)/(doctorListing)',
+                                    params: {filter:'Pediatrician'}
+                                })}
+                                     image={require('@/assets/images/PediatricianFilter.png')}/>
+                        <ConsultTile title={'ENT'} onPress={() => router.push({
+                                    pathname: '/(mainTabs)/(doctorListing)',
+                                    params: {filter:'ENT '}
+                                })}
+                        image={require('@/assets/images/EntFilter.png')}/>
                     </View>
                     <SectionHeader onClick={() => {/*Todo*/
                     }} title={'Book Tests'}/>
-                    {/*<SectionList style={{flex: 1}} contentContainerStyle={{paddingBottom: 300}} sections={sectionData}*/}
-                    {/*             renderItem={({item}) => {*/}
-                    {/*                 return (*/}
-                    {/*                     <View style={{*/}
-                    {/*                         marginTop: 50,*/}
-                    {/*                         backgroundColor: 'black',*/}
-                    {/*                         width: '100%',*/}
-                    {/*                         height: 300*/}
-                    {/*                     }}></View>*/}
-                    {/*                 )*/}
-                    {/*             }}*/}
-                    {/*    // stickyHeaderHiddenOnScroll={true}*/}
-                    {/*             renderSectionHeader={({section: {title}}) => (*/}
-                    {/*                 <View style={{*/}
-                    {/*                     display: 'flex',*/}
-                    {/*                     flexDirection: 'row',*/}
-                    {/*                     justifyContent: 'center',*/}
-                    {/*                     alignItems: 'center'*/}
-                    {/*                 }}>*/}
-                    {/*                     <View style={{*/}
-                    {/*                         borderColor: 'grey',*/}
-                    {/*                         width: '25%',*/}
-                    {/*                         borderWidth: StyleSheet.hairlineWidth*/}
-                    {/*                     }}/><Text style={{*/}
-                    {/*                     fontSize: 16,*/}
-                    {/*                     margin: 8,*/}
-                    {/*                     color: 'grey',*/}
-                    {/*                     fontFamily: 'Nunito',*/}
-                    {/*                     fontWeight: '700'*/}
-                    {/*                 }}>{title}</Text>*/}
-                    {/*                     <View style={{*/}
-                    {/*                         borderColor: 'grey',*/}
-                    {/*                         width: '25%',*/}
-                    {/*                         borderWidth: StyleSheet.hairlineWidth*/}
-                    {/*                     }}/><Text style={{}}/>*/}
-                    {/*                 </View>*/}
-                    {/*             )}/>*/}
                 </ScrollView>
             </View>
         </SafeAreaView>

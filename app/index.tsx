@@ -3,8 +3,7 @@ import {View, Text, StyleSheet, Dimensions, Image, Animated, useAnimatedValue, I
 import {SafeAreaView} from "react-native-safe-area-context";
 import {FontAwesome} from "@expo/vector-icons";
 import {router} from "expo-router";
-
-export const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
+import {screenWidth} from "@/app/_layout";
 
 const index = () => {
     const animTexts = useRef(new Animated.Value(0)).current

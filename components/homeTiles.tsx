@@ -11,7 +11,9 @@ const HomeTiles = ({headerText, image}: Props) => {
     return (
         <TouchableOpacity style={styles.container}>
             {
-                <ImageBackground resizeMode={'contain'} style={[styles.image, {overflow: 'hidden'}]} source={image}>
+                <ImageBackground resizeMode={'contain'}
+                                 style={[styles.image, {overflow: 'hidden'}]}
+                                 source={image}>
                     <Text style={styles.headerText}>{headerText}</Text>
                 </ImageBackground>
             }

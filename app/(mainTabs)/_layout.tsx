@@ -10,7 +10,9 @@ const _layout = () => {
     return (
         <Tabs screenOptions={{
             headerShown: false,tabBarBackground: () => {
-                return <View style={{backgroundColor: 'tomato', flex: 1}}></View>;
+                return <View style={{backgroundColor: 'tomato', flex: 1}}>
+
+                </View>;
             }
         }}>
             <Tabs.Screen
@@ -24,7 +26,7 @@ const _layout = () => {
                 }}
             />
             <Tabs.Screen
-                name='doctorListing'
+                name='(doctorListing)'
                 options={{
                     tabBarIcon: ({focused}) => {
                         return <Ionicons color={'white'} size={25}
@@ -35,8 +37,7 @@ const _layout = () => {
                 }}
             />
             <Tabs.Screen
-                name='profileScreen'
-
+                name='(profileScreen)'
                 options={{
                     tabBarIcon: ({focused}) => {
                         return <Octicons color={'white'} size={25}
