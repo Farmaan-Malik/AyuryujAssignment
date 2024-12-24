@@ -7,10 +7,11 @@ interface DoctorCardProps {
     doctor: DoctorObject;
     onPress: () => void;
     selectDoctor?: () => void;
-    title?: string
+    title?: string,
+    selected?: boolean,
 }
 
-const DoctorCard = ({doctor, onPress, selectDoctor, title = 'Consult Now'}: DoctorCardProps) => {
+const DoctorCard = ({doctor, selected = false, onPress, selectDoctor, title = 'Consult Now'}: DoctorCardProps) => {
     return (
         <View style={styles.container}>
             <View style={styles.mainRow}>
@@ -39,10 +40,16 @@ const DoctorCard = ({doctor, onPress, selectDoctor, title = 'Consult Now'}: Doct
                 <TouchableOpacity onPress={onPress} style={styles.button}>
                     <Text style={[styles.buttonText, {color: 'black', backgroundColor: 'white'}]}>Know more</Text>
                 </TouchableOpacity>
+                {selected ?
+                    <View style={[styles.button]}>
+                        <Text style={[styles.buttonText, {backgroundColor: '#90EE90', color: 'white',fontWeight: '900'}]}>Added</Text>
+                    </View>
+                    :
+                    <TouchableOpacity onPress={selectDoctor} style={styles.button}>
+                        <Text style={styles.buttonText}>{title}</Text>
+                    </TouchableOpacity>
+                }
 
-                <TouchableOpacity onPress={selectDoctor} style={styles.button}>
-                    <Text style={styles.buttonText}>{title}</Text>
-                </TouchableOpacity>
 
             </View>
         </View>

@@ -251,7 +251,7 @@ const DoctorListing = () => {
     const [data, setData] = useState<DoctorObject[]>(doctors);
     const [showModes, setShowModes] = useState(false)
     const animValue = useRef(new Animated.Value(0)).current
-    const setDoctor = useStore(state => state.setSelectedDoctor)
+    const {setSelectedDoctor:setDoctor, selectedDoctor} = useStore(state => state)
     const useFilter = (value: string) => {
         if (value.trim() === '') {
             setData(doctors)
@@ -348,7 +348,7 @@ const DoctorListing = () => {
                     }]}>
                         {data.length > 0 ? (
                             data.map(item => (
-                                <DoctorCard onPress={() => {
+                                <DoctorCard selected={selectedDoctor == item} onPress={() => {
                                     router.push({
                                         pathname: '/doctorDetails',
                                         params: {doctor: JSON.stringify(item)}

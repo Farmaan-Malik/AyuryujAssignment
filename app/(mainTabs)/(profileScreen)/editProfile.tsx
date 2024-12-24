@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, TextInput, KeyboardAvoidingView, Platform} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, TextInput, KeyboardAvoidingView, Platform, Image} from 'react-native';
 import {useStore} from "@/utils/store/store";
 import {createAvatar} from "@dicebear/core";
 import {lorelei} from "@dicebear/collection";
@@ -25,7 +25,7 @@ const EditProfile = () => {
         <SafeAreaView style={[globalStyles.container]}>
             <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
                 <View style={[globalStyles.mainView]}>
-                    <SvgXml style={[styles.svg]} xml={svg}/>
+                    {Platform.OS === 'ios' ? <SvgXml style={[styles.svg]} xml={svg}/> :  <Image style={[styles.svg,{borderWidth: 0}]} source={require('@/assets/images/profilePlaceholder.png')}/>}
                     <Text style={[styles.text]}> Username:</Text>
                     <TextInput style={[styles.input]} value={formName}
                                onChangeText={(value) => setFormName(value)}/>
@@ -104,6 +104,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         paddingHorizontal: 12,
         fontSize: 18,
+        backgroundColor:'white',
     },
     text: {
         fontSize: 15,
@@ -130,7 +131,8 @@ const styles = StyleSheet.create({
         shadowColor: '#000',
         shadowOffset:{width: 0, height: 2},
         shadowOpacity: 0.2,
-        flexDirection:'row'
+        flexDirection:'row',
+        elevation:5,
     }
 
 });

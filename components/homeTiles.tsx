@@ -1,23 +1,23 @@
 import React from 'react';
-import {Text, StyleSheet, ImageBackground, TouchableOpacity} from 'react-native';
+import {Text, StyleSheet, ImageBackground, TouchableOpacity, View} from 'react-native';
 import {screenWidth} from "@/app/_layout";
 
 interface Props {
     headerText: string
     image: string
 }
-
 const HomeTiles = ({headerText, image}: Props) => {
     return (
-        <TouchableOpacity style={styles.container}>
+        <View style={styles.container}>
             {
                 <ImageBackground resizeMode={'contain'}
                                  style={[styles.image, {overflow: 'hidden'}]}
+    // @ts-ignore
                                  source={image}>
                     <Text style={styles.headerText}>{headerText}</Text>
                 </ImageBackground>
             }
-        </TouchableOpacity>
+        </View>
     );
 };
 

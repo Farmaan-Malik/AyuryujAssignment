@@ -10,6 +10,7 @@ import HomeTiles from "@/components/homeTiles";
 import AdView from "@/components/adView";
 import ConsultTile from "@/components/consultTile";
 import {router} from "expo-router";
+import BookTests from "@/components/bookTests";
 
 
 const index = () => {
@@ -63,6 +64,14 @@ const index = () => {
                     </View>
                     <SectionHeader onClick={() => {/*Todo*/
                     }} title={'Book Tests'}/>
+                    <View style={{flex: 1,flexDirection:'row'}}>
+                        <BookTests title={'MRI Scan'} onPress={() =>{}}
+                                     image={require('@/assets/images/mri.png')}/>
+                        <BookTests title={'CT Scan'} onPress={() => {}}
+                                     image={require('@/assets/images/ct.png')}/>
+                        <BookTests title={'X-Ray'} onPress={() => {}}
+                                     image={require('@/assets/images/xRayBg.png')}/>
+                    </View>
                 </ScrollView>
             </View>
         </SafeAreaView>

@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
-import {View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ScrollView} from 'react-native';
+import React from 'react';
+import {View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ScrollView, Platform} from 'react-native';
 import {globalStyles} from "@/assets/styles/globalStyles";
 import {SafeAreaView} from "react-native-safe-area-context";
 import {useStore} from "@/utils/store/store";
-import Svg, {Path, SvgXml} from "react-native-svg";
+import  {SvgXml} from "react-native-svg";
 import {router} from "expo-router";
 import {screenWidth} from "@/app/_layout";
 import DoctorCard from "@/components/doctorCard";
@@ -11,14 +11,13 @@ import DoctorCard from "@/components/doctorCard";
 const Index = () => {
 
     const {svg, username, gender, age, selectedDoctor, setSelectedDoctor} = useStore(state => state)
-    console.log(svg)
     return (
         <SafeAreaView style={[globalStyles.container]}>
             <View style={[globalStyles.mainView, {backgroundColor: 'white', marginTop: 0}]}>
                 <Image resizeMode={'contain'} style={[styles.bg]} source={require('@/assets/images/profileBg.png')}/>
                 <View style={[styles.topContainer]}>
                     <View style={[styles.top]}>
-                        <SvgXml style={[styles.svg]} xml={svg}/>
+                        {Platform.OS === 'ios' ? <SvgXml style={[styles.svg]} xml={svg}/> :  <Image resizeMode={'cover'} style={[styles.svg,{borderWidth: 1,backgroundColor: 'white'}]} source={require('@/assets/images/profilePlaceholder.png')}/>}
                     </View>
                     <View style={[styles.content]}>
                         <Text style={[styles.text]}>{username}</Text>
@@ -26,7 +25,7 @@ const Index = () => {
                             // borderWidth: 1,
                             fontWeight: '800',
                             fontSize: 14
-                        }]}>{gender}, <Text> {age}yrs</Text></Text>
+                        }]}>{gender}, <Text> {age} yrs</Text></Text>
                         <View style={[{
                             flexDirection: 'row',
                             width: '100%',
@@ -68,9 +67,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         position: 'absolute',
         width: '100%',
-        top: '-10%',
+        top: '-8%',
+        flex:1,
         // right:0,
         // borderWidth:StyleSheet.hairlineWidth,
+        overflow:'visible'
     },
     edit: {
         width: '100%',
@@ -78,9 +79,9 @@ const styles = StyleSheet.create({
         backgroundColor: 'yellow',
     },
     svg: {
-        width: screenWidth / 3,
-        height: screenWidth / 3,
-        borderWidth: StyleSheet.hairlineWidth,
+        width: screenWidth/3,
+        height:screenWidth/3,
+        borderWidth: 2,
         borderColor: 'tomato',
         borderRadius: 100,
         flex: 1,
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 5,
         shadowOffset: {width: 0, height: 0},
-        elevation: 5,
+        // elevation: 1,
     },
     container: {
         justifyContent: 'center',
@@ -107,6 +108,7 @@ const styles = StyleSheet.create({
         // flex: 1,
         width: '100%',
         // borderWidth: 1,
+        overflow:'visible'
         // position: 'relative',
     },
     content: {

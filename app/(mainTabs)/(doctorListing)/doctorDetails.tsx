@@ -51,7 +51,7 @@ const DoctorDetails = () => {
                     </View>
                     <View style={[styles.content]}>
                         <View>
-                            <Text style={[styles.docDetailText, {textAlign: 'left', width: '100%', fontSize: 14}]}>Clinic
+                            <Text style={[styles.docDetailText, {textAlign: 'left', width: '100%', fontSize: 14,color:'tomato'}]}>Clinic
                                 Name:</Text>
                             <Text style={[styles.docDetailText, {
                                 fontSize: 13,
@@ -60,10 +60,11 @@ const DoctorDetails = () => {
                             <Text style={[styles.docDetailText, {
                                 textAlign: 'left',
                                 width: '100%',
-                                marginTop: 10
+                                marginTop: 10,
+                                color:'tomato'
                             }]}>About</Text>
                             <Text style={[styles.docDetailText, {
-                                fontSize: 13,
+                                fontSize: 14,
                                 fontWeight: '500'
                             }]}>{parsedDoctor.description}</Text>
                         </View>
@@ -130,7 +131,8 @@ const styles = StyleSheet.create({
         width: screenWidth / 3,
         height: screenWidth / 3,
         borderRadius: 100,
-        // borderWidth: StyleSheet.hairlineWidth,
+        borderWidth: 1,
+        borderColor:'tomato'
     },
     innerRow: {
         flexDirection: 'row',

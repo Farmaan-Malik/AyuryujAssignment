@@ -3,6 +3,9 @@ import {GestureHandlerRootView} from "react-native-gesture-handler";
 import React, {useEffect} from "react";
 import {useFonts} from "expo-font";
 import {Dimensions} from "react-native";
+import {Ionicons} from "@expo/vector-icons";
+import CustomDrawerContent from "@/components/customDrawerContent";
+
 
 export const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -14,39 +17,45 @@ export default function RootLayout() {
     });
     return (
         <GestureHandlerRootView>
-            <Drawer screenOptions={{
-                drawerType: "front",
-                drawerContentContainerStyle: {flex: 1, backgroundColor: 'tomato'},
+            <Drawer drawerContent={CustomDrawerContent} screenOptions={{
                 drawerItemStyle: {
                     marginTop: 10,
                     shadowColor: 'black',
-                    shadowOpacity: 0.2,
-                    shadowRadius: 5,
+                    shadowOpacity: 0.1,
+                    shadowRadius: 1,
                     overflow: 'visible',
                     shadowOffset: {width: 5, height: 5},
                     backgroundColor: 'white',
                     elevation: 2,
                 },
+
+                drawerActiveTintColor: 'tomato',
                 drawerActiveBackgroundColor: 'white',
-                drawerInactiveTintColor: 'grey',
+                drawerInactiveTintColor: 'tomato',
                 drawerHideStatusBarOnOpen: true,
                 drawerStatusBarAnimation: 'slide',
                 drawerLabelStyle: {fontSize: 12},
                 headerTransparent: true,
-                headerTitleStyle: {fontSize: 16,fontFamily: 'Nunito', fontWeight: 'semibold'},
-                drawerContentStyle: {borderRadius:20},
-                drawerStyle: {backgroundColor:'transparent'},
+                headerTitleStyle: {fontSize: 16, fontFamily: 'Nunito', fontWeight: 'semibold'},
             }}>
+
 
                 <Drawer.Screen
                     name="(mainTabs)"
-                    options={{title: 'Home'}}
+                    options={{
+                        title: 'Home', drawerIcon: ({color, size}) => (
+                            <Ionicons color={color} size={size} name={'home'}/>
+                        ),
+                        headerTitle:'',
+
+                    }}
                 />
-                <Drawer.Screen
-                    name="setting"/>
+
                 <Drawer.Screen
                     name="index"
-                options={{title: 'Main',headerShown: false}}/>
+                    options={{title: 'Log Out', headerShown: false,drawerIcon: ({color, size}) => (
+                            <Ionicons color={color} size={size} name={'log-out'}/>
+                        )}}/>
             </Drawer>
         </GestureHandlerRootView>
     )

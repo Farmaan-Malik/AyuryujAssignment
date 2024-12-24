@@ -10,12 +10,13 @@ interface ConsultTileProps {
     title: string,
 }
 
-const ConsultTile = ({onPress, image, title}: ConsultTileProps) => {
+const BookTests = ({onPress, image, title}: ConsultTileProps) => {
+
     return (
         <TouchableOpacity onPress={onPress} style={styles.container}>
-            <LinearGradient style={styles.image} start={{x: 0, y: 0.2}} end={{x: 1, y: 1}}
+            <LinearGradient style={styles.image} start={{x: 0.7, y: 0.2}} end={{x: 1, y: 1}}
     // @ts-ignore
-                            colors={Colors.PrimaryGradient}>
+                            colors={Colors.SecondaryGradient}>
                 <ImageBackground style={styles.image}
     // @ts-ignore
                                  source={image}>
@@ -26,7 +27,7 @@ const ConsultTile = ({onPress, image, title}: ConsultTileProps) => {
     );
 };
 
-export default ConsultTile;
+export default BookTests;
 
 const styles = StyleSheet.create({
     container: {
