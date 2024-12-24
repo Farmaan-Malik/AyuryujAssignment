@@ -36,7 +36,6 @@ const index = () => {
                     </View>
                     <View style={[globalStyles.mainView, {
                         flex: 1,
-                        // borderWidth: 1,
                         marginTop: 15,
                         marginBottom: 15
                     }]}>

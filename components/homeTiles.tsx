@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, StyleSheet, ImageBackground, TouchableOpacity, View} from 'react-native';
+import {Text, StyleSheet, ImageBackground, View} from 'react-native';
 import {screenWidth} from "@/app/_layout";
 
 interface Props {
@@ -27,18 +27,15 @@ const styles = StyleSheet.create({
     container: {
         justifyContent: 'center',
         alignItems: 'center',
-        // marginLeft:2,
         marginVertical: 8,
         width: screenWidth / 3.5,
         height: screenWidth / 3.5,
-        // borderWidth: 1,
         borderRadius: 20,
         shadowColor: 'black',
         shadowOpacity: 0.1,
         shadowOffset: {width: 0, height: 8},
         shadowRadius: 5,
         elevation: 5,
-
     },
     image: {
         borderRadius: 20,

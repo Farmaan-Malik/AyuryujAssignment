@@ -6,16 +6,13 @@ import {SafeAreaView} from "react-native-safe-area-context";
 import {globalStyles} from "@/assets/styles/globalStyles";
 import {AntDesign} from "@expo/vector-icons";
 import {screenWidth} from "@/app/_layout";
-import {LinearGradient} from "expo-linear-gradient";
-import {Colors} from "@/assets/colors/colors";
 import {router} from "expo-router";
 import {useStore} from "@/utils/store/store";
 
 const DoctorDetails = () => {
     const {selectedDoctor, setSelectedDoctor} = useStore(state => state)
     const animValue = useRef(new Animated.Value(0)).current;
-    const searchParams = useSearchParams(); // This returns URLSearchParams
-    // Extract and parse the 'doctor' parameter
+    const searchParams = useSearchParams();
     const doctor = searchParams.get('doctor');
     const parsedDoctor: DoctorObject = doctor ? JSON.parse(doctor) : null;
 
@@ -105,16 +102,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        // backgroundColor: 'wheat',
-        // flex:1,
-        // borderWidth: 1,
     },
     back: {
         padding: 10,
-        // borderWidth: StyleSheet.hairlineWidth,
         borderRadius: 50,
         backgroundColor: 'white',
-
     },
     headerText: {
         flex: 1,
@@ -126,7 +118,6 @@ const styles = StyleSheet.create({
     },
     contentContainer: {
         flex: 1,
-        // borderWidth: StyleSheet.hairlineWidth,
         width: screenWidth,
         borderTopEndRadius: 30,
         borderTopStartRadius: 30,
@@ -160,10 +151,8 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontFamily: 'Nunito',
         fontWeight: 'bold',
-        // flex:1,
         textAlign: 'left',
         padding: 5
-        // borderWidth:StyleSheet.hairlineWidth,
     },
     button: {
         backgroundColor: 'tomato',
@@ -187,7 +176,6 @@ const styles = StyleSheet.create({
     },
     content: {
         marginTop: 10,
-        // borderWidth:1,
         flex: 1,
         justifyContent: 'space-around',
     }

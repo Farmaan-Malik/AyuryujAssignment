@@ -18,7 +18,6 @@ const EditProfile = () => {
 
     const avatar = createAvatar(lorelei, {
         seed: formName
-        // ... options
     });
     const svg = avatar.toString()
     return (
@@ -122,8 +121,6 @@ const styles = StyleSheet.create({
     touchable: {
         backgroundColor: 'white',
         flex:1,
-        // width: '80%',
-        // borderWidth: StyleSheet.hairlineWidth,
         borderRadius: 30,
         justifyContent: 'center',
         alignItems: 'center',

@@ -1,6 +1,5 @@
 import {create} from 'zustand'
 import {DoctorObject} from "@/app/(mainTabs)/(doctorListing)";
-import {state} from "sucrase/dist/types/parser/traverser/base";
 import {createAvatar} from "@dicebear/core";
 import {lorelei} from "@dicebear/collection";
 

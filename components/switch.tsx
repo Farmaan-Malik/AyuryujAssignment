@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
     container: {
         justifyContent: 'center',
         alignItems: 'center',
-        // borderWidth: 1,
         flex: 1,
         borderRadius:50,
         paddingVertical:10,

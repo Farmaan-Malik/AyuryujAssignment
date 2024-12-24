@@ -40,14 +40,12 @@ const styles = StyleSheet.create({
     leftContainer: {
         flexDirection: 'column',
         flex: 1,
-        // borderWidth: 1
     },
     rightContainer: {
         flexDirection: 'column',
         alignItems: 'flex-end',
         borderTopEndRadius: 30,
         borderBottomEndRadius: 30,
-        // borderWidth: 1,
         overflow: 'hidden',
         flex: 1,
     },

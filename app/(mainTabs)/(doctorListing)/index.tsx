@@ -272,7 +272,6 @@ const DoctorListing = () => {
     };
 
     useEffect(() => {
-        console.log("hi");
         Animated.spring(animValue, {toValue: 1, useNativeDriver: true, stiffness: 100}).start()
     }, []);
 
@@ -379,11 +378,8 @@ const styles = StyleSheet.create({
     },
     listContainer: {
         zIndex:-1,
-        // flex: 1,
-        // marginTop: 16,
         justifyContent: 'center',
         alignItems: 'center',
-        // borderWidth: 1,
         paddingTop: 30
     },
     doctorName: {
@@ -403,12 +399,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         gap: 5,
-        // borderWidth: 1,
     },
     ScrollContent: {
-        // flex: 1,
         paddingBottom: 100,
-
     },
     Scroll: {
         width: '100%',
@@ -418,16 +411,13 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         flex: 1,
         width: screenWidth / 3,
-        // height:screenWidth/3,
         top: 10,
         right: 25,
         zIndex: 3,
-        // borderWidth:StyleSheet.hairlineWidth,
         borderRadius: 10,
         borderTopEndRadius: 0,
         justifyContent: 'center',
         alignItems: 'center',
-        // overflow:'hidden',
         shadowColor: 'black',
         shadowOffset: {width: 4, height: 4},
         shadowRadius: 5,

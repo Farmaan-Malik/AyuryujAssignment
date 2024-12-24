@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Image, ImageBackground} from 'react-native';
+import { Text, StyleSheet, TouchableOpacity, Image, ImageBackground} from 'react-native';
 import {screenWidth} from "@/app/_layout";
 import {LinearGradient} from "expo-linear-gradient";
 import {Colors} from "@/assets/colors/colors";
@@ -36,10 +36,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: screenWidth / 3.2,
         height: screenWidth / 3.2,
-        // borderWidth: 1,
         margin: 4,
         borderRadius: 20,
-        // backgroundColor: 'tomato',
         shadowColor: 'black',
         shadowOpacity: 0.4,
         shadowRadius: 3,

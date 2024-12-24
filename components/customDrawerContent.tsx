@@ -11,7 +11,6 @@ export default function CustomDrawerContent(props: any) {
 
     return (
         <View style={styles.container}>
-            {/* Header Section */}
             <View style={styles.header}>
                 {Platform.OS === 'ios' ? <SvgXml style={{width: 80, height: 80, borderWidth:StyleSheet.hairlineWidth,borderColor:'white', borderRadius:100}} xml={svg}/> : <Image  source={require('@/assets/images/profilePlaceholder.png')} resizeMode={'cover'}
                            style={{width: 80, height: 80,borderWidth:StyleSheet.hairlineWidth, borderRadius:100}}/>
@@ -23,7 +22,6 @@ export default function CustomDrawerContent(props: any) {
             </View>
             <DrawerContentScrollView {...props}>
                 <DrawerItem style={{
-                    // marginTop: 10,
                     shadowColor: 'blarck',
                     shadowOpacity: 0.1,
                     shadowRadius: 1,
@@ -62,7 +60,6 @@ const styles = StyleSheet.create({
         paddingTop: 50,
         paddingHorizontal: 16,
         backgroundColor: 'tomato',
-        // justifyContent:'center',
         alignItems: 'center',
         gap: 20
     },

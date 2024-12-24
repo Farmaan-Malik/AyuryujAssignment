@@ -22,7 +22,6 @@ const DoctorCard = ({doctor, selected = false, onPress, selectDoctor, title = 'C
                         fontFamily: 'Nunito',
                         textAlign: 'center',
                         fontWeight: '800',
-                        // borderWidth: StyleSheet.hairlineWidth,
                         backgroundColor: 'tomato',
                         color: 'white',
 
@@ -49,8 +48,6 @@ const DoctorCard = ({doctor, selected = false, onPress, selectDoctor, title = 'C
                         <Text style={styles.buttonText}>{title}</Text>
                     </TouchableOpacity>
                 }
-
-
             </View>
         </View>
     );
@@ -63,7 +60,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         width: screenWidth - 50,
-        // borderWidth: StyleSheet.hairlineWidth,
         minHeight: screenWidth / 2,
         marginTop: 20,
         borderRadius: 20,
@@ -83,7 +79,6 @@ const styles = StyleSheet.create({
         borderTopStartRadius: 20,
         borderTopEndRadius: 20,
         gap: 10,
-// borderWidth: StyleSheet.hairlineWidth,
     },
     image: {
         width: screenWidth / 3,
@@ -92,7 +87,6 @@ const styles = StyleSheet.create({
     column: {
         flex: 1,
         flexDirection: 'column',
-        // borderWidth: StyleSheet.hairlineWidth,
     },
     text: {
         fontSize: 16,
@@ -110,7 +104,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'tomato',
         flex: 1,
         marginHorizontal: 5,
-        // borderWidth:1,
         borderRadius: 10
     },
     buttonText: {

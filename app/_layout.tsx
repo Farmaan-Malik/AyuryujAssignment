@@ -1,13 +1,13 @@
 import {Drawer} from "expo-router/drawer";
 import {GestureHandlerRootView} from "react-native-gesture-handler";
-import React, {useEffect} from "react";
+import React from "react";
 import {useFonts} from "expo-font";
 import {Dimensions} from "react-native";
 import {Ionicons} from "@expo/vector-icons";
 import CustomDrawerContent from "@/components/customDrawerContent";
 
 
-export const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
+export const {width: screenWidth} = Dimensions.get('window');
 
 export default function RootLayout() {
     const [fonts] = useFonts({

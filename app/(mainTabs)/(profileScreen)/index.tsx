@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ScrollView, Platform} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Image, ScrollView, Platform} from 'react-native';
 import {globalStyles} from "@/assets/styles/globalStyles";
 import {SafeAreaView} from "react-native-safe-area-context";
 import {useStore} from "@/utils/store/store";
@@ -22,7 +22,6 @@ const Index = () => {
                     <View style={[styles.content]}>
                         <Text style={[styles.text]}>{username}</Text>
                         <Text style={[styles.text, {
-                            // borderWidth: 1,
                             fontWeight: '800',
                             fontSize: 14
                         }]}>{gender}, <Text> {age} yrs</Text></Text>
@@ -73,8 +72,6 @@ const styles = StyleSheet.create({
         width: '100%',
         top: '-8%',
         flex:1,
-        // right:0,
-        // borderWidth:StyleSheet.hairlineWidth,
         overflow:'visible'
     },
     edit: {
@@ -94,7 +91,6 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 5,
         shadowOffset: {width: 0, height: 0},
-        // elevation: 1,
     },
     container: {
         justifyContent: 'center',
@@ -109,20 +105,13 @@ const styles = StyleSheet.create({
 
     },
     topContainer: {
-        // flex: 1,
         width: '100%',
-        // borderWidth: 1,
         overflow:'visible'
-        // position: 'relative',
     },
     content: {
         marginTop: '20%',
-        // borderWidth: 1,
-        // justifyContent: 'center',
         alignItems: 'center',
-        // flex: 1,
         height: '100%',
-        // paddingTop:10
     },
     text: {
         fontSize: 18,
@@ -133,9 +122,7 @@ const styles = StyleSheet.create({
     },
     button: {
         backgroundColor: 'tomato',
-        // flex:1,
         marginHorizontal: 5,
-        // borderWidth:1,
         borderRadius: 10,
         marginTop: 8
     },

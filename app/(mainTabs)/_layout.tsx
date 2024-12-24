@@ -1,9 +1,6 @@
 import {View, Text} from 'react-native'
 import React from 'react'
 import {Tabs} from 'expo-router'
-import TabLayout from '@/app-example/app/(tabs)/_layout'
-import {GestureHandlerRootView} from "react-native-gesture-handler";
-import {Drawer} from "expo-router/drawer";
 import {FontAwesome, Ionicons, Octicons} from "@expo/vector-icons";
 
 const _layout = () => {

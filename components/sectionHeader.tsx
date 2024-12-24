@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import {Button} from "@react-navigation/elements";
 import {Colors} from "@/assets/colors/colors";
 
 interface SectionHeaderProps {
@@ -47,7 +46,6 @@ const styles = StyleSheet.create({
         fontFamily: 'Nunito',
         fontSize: 16,
         fontWeight: '600',
-        // borderWidth: 1,
         marginVertical: 15}
 });
 
