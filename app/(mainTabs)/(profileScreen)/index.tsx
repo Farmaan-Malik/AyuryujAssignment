@@ -49,6 +49,10 @@ const Index = () => {
                             {selectedDoctor ? <DoctorCard selectDoctor={() => {
                                 setSelectedDoctor(null)
                             }} title={'Cancel Appointment'} doctor={selectedDoctor} onPress={() => {
+                                router.push({
+                                    pathname: '/doctorDetails',
+                                    params: {doctor: JSON.stringify(selectedDoctor)}
+                                })
                             }}/> : <Text style={[styles.text, {marginTop: 20}]}>No Doctor Selected</Text>
                             }
                         </ScrollView>

@@ -29,7 +29,9 @@ const DoctorDetails = () => {
                 <View style={[styles.topBar]}>
                     <AntDesign onPress={() => {
                         Animated.spring(animValue, {toValue: -2, useNativeDriver: true, stiffness: 100}).start();
-                        setTimeout(()=>{router.navigate('/(mainTabs)/(doctorListing)')},150)
+                        setTimeout(()=>{
+                            router.back()
+                        },150)
                     }} size={20} style={styles.back} name={'arrowleft'}/>
                     <Text style={styles.headerText}>Doctor's Profile</Text>
                 </View>
