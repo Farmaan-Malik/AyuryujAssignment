@@ -19,7 +19,7 @@ const DoctorCard = ({doctor, selected = false, onPress, selectDoctor, title = 'C
             <View style={styles.mainRow}>
                 <View>
                     <Image
-                        resizeMode="contain"
+                        resizeMode='contain'
                         style={styles.image}
                         source={require('@/assets/images/doctorPlaceholder.png')}
                     />
@@ -28,7 +28,7 @@ const DoctorCard = ({doctor, selected = false, onPress, selectDoctor, title = 'C
                 <View style={styles.column}>
                     <View style={[styles.innerRow]}>
                         <Image style={styles.logo} source={require('@/assets/images/mfineLogo.png')}/>
-                        <View style={{borderLeftWidth: StyleSheet.hairlineWidth, paddingLeft: 10}}>
+                        <View style={{borderLeftWidth: StyleSheet.hairlineWidth, paddingLeft: 10,flex:1}}>
                             <Text numberOfLines={1} style={styles.innerRowText} ellipsizeMode="tail">
                                 {doctor.clinic}
                             </Text>
@@ -195,13 +195,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         gap: 10,
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         marginBottom: 5,
         // borderWidth: 1,
     },
     logo: {
         width: 30,
         height: 30,
+        // borderWidth:1,
     },
     innerRowText: {
         fontSize: 12,
