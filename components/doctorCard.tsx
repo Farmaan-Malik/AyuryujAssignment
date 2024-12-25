@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {screenWidth} from "@/app/_layout";
-import {DoctorObject} from "../app/(mainTabs)/(doctorListing)";
+import {DoctorObject} from "@/app/(mainTabs)/(doctorListing)";
 import {AntDesign, Ionicons} from "@expo/vector-icons";
 import {LinearGradient} from "expo-linear-gradient";
 
@@ -13,7 +13,7 @@ interface DoctorCardProps {
     selected?: boolean;
 }
 
-const DoctorCard = ({doctor, selected = false, onPress, selectDoctor, title = 'Consult Now'}: DoctorCardProps) => {
+const DoctorCard = ({doctor, selected = false, onPress, selectDoctor, title = 'Consult now'}: DoctorCardProps) => {
     return (
         <View style={styles.container}>
             <View style={styles.mainRow}>
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 16,
-        fontWeight: 'bold',
+        fontWeight: '700',
         fontFamily: 'Nunito',
         color: 'black',
         marginBottom: 2,
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize: 12,
         color: 'white',
-        fontWeight: '600',
+        fontWeight: '800',
         fontFamily: 'Nunito',
         textAlign: 'center',
         padding: 8,
