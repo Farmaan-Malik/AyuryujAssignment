@@ -27,7 +27,9 @@ const DoctorCard = ({doctor, selected = false, onPress, selectDoctor, title = 'C
                 </View>
                 <View style={styles.column}>
                     <View style={[styles.innerRow]}>
+                        <View style={{flex:0.6, justifyContent:'center', alignItems:'center'}}>
                         <Image style={styles.logo} source={require('@/assets/images/mfineLogo.png')}/>
+                        </View>
                         <View style={{borderLeftWidth: StyleSheet.hairlineWidth, paddingLeft: 10,flex:1}}>
                             <Text numberOfLines={1} style={styles.innerRowText} ellipsizeMode="tail">
                                 {doctor.clinic}
@@ -202,6 +204,7 @@ const styles = StyleSheet.create({
     logo: {
         width: 30,
         height: 30,
+
         // borderWidth:1,
     },
     innerRowText: {
@@ -209,6 +212,7 @@ const styles = StyleSheet.create({
         fontWeight: '700',
         fontFamily: 'Nunito',
         width: '95%',
+        // flex:1
         // borderWidth: StyleSheet.hairlineWidth,
     },
     languages: {
