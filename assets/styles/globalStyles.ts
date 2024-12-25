@@ -7,7 +7,7 @@ export const  globalStyles = StyleSheet.create({
         width:screenWidth,
         height:'100%',
         backgroundColor: '#F5FCFF',
-        padding:8,
+        // padding:8,
         // borderWidth:1
     },
     mainView: {
@@ -19,5 +19,6 @@ export const  globalStyles = StyleSheet.create({
         // borderWidth:1,
         width:'100%',
         height:'100%',
+        paddingHorizontal:8
     }
 });

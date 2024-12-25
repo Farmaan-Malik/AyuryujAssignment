@@ -7,8 +7,6 @@ import {screenWidth} from "@/app/_layout";
 
 const index = () => {
     const animTexts = useRef(new Animated.Value(0)).current
-
-
     useEffect(() => {
         Animated.spring(animTexts, {toValue: 1, useNativeDriver: true, stiffness:100}).start();
 
@@ -27,14 +25,13 @@ const index = () => {
 
 
             <View style={{marginTop: 20}}>
-                <Animated.Text style={{
-                    fontSize: 50,
-                    fontWeight: '600',
-                    fontFamily: 'Nova-Oval',
-                    color: 'tomato',
+                <Animated.View style={{
                     transform: [{translateY: animTexts.interpolate({inputRange: [0, 1], outputRange: [-300, 0]})},{scale: animTexts.interpolate({inputRange: [0, 1], outputRange: [0,1]})}]
-                }}>Health<Text
-                    style={{color: 'green'}}>{'\n Bridge'}</Text></Animated.Text>
+                }}>
+                    <Text style={[styles.text]}>Health</Text>
+                    <Text
+                        style={[styles.text,{color: 'green'}]}>Bridge</Text>
+                </Animated.View>
             </View>
             <Animated.View style={{flex: 1, justifyContent: 'flex-end', alignItems: 'center',transform: [{translateY: animTexts.interpolate({inputRange: [0, 1], outputRange: [300, 0]})},{scale: animTexts.interpolate({inputRange: [0, 1], outputRange: [0,1]})}]
             }}>
@@ -71,5 +68,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#F5FCFF',
+    },
+    text:{
+        fontSize: 50,
+        fontWeight: '600',
+        fontFamily: 'Nova-Oval',
+        color: 'tomato',
     }
 });

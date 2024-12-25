@@ -21,17 +21,8 @@ const DoctorDetails = () => {
     }, [searchParams]);
 
     return (
-        <SafeAreaView style={[globalStyles.container, {}]}>
-            <View style={[globalStyles.mainView, {justifyContent: 'flex-start', width: '100%'}]}>
-                <View style={[styles.topBar]}>
-                    <AntDesign onPress={() => {
-                        Animated.spring(animValue, {toValue: -2, useNativeDriver: true, stiffness: 100}).start();
-                        setTimeout(()=>{
-                            router.back()
-                        },150)
-                    }} size={20} style={styles.back} name={'arrowleft'}/>
-                    <Text style={styles.headerText}>Doctor's Profile</Text>
-                </View>
+        <SafeAreaView edges={[]} style={[globalStyles.container, {}]}>
+            <View style={[globalStyles.mainView, {justifyContent: 'flex-start', width: '100%',marginTop: 0}]}>
                 <Animated.View style={[styles.contentContainer, {
                     transform: [{
                         translateY: animValue.interpolate({

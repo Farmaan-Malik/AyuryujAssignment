@@ -2,12 +2,13 @@ import React, {useEffect, useRef, useState} from 'react';
 import {View, Text, StyleSheet, TextInput, ScrollView, TouchableOpacity, Animated} from 'react-native';
 import {SafeAreaView} from "react-native-safe-area-context";
 import {globalStyles} from "@/assets/styles/globalStyles";
-import {Feather} from "@expo/vector-icons";
+import {AntDesign, MaterialIcons} from "@expo/vector-icons";
 import DoctorCard from "@/components/doctorCard";
 import {router} from "expo-router";
-import {screenWidth} from "@/app/_layout";
+import {screenHeight, screenWidth} from "@/app/_layout";
 import {useSearchParams} from "expo-router/build/hooks";
 import {useStore} from "@/utils/store/store";
+import CouponAd from "@/components/couponAd";
 
 export interface DoctorObject {
     id: number;
@@ -19,6 +20,7 @@ export interface DoctorObject {
     yearsOfExperience: number;
     description: string;
     clinic: string;
+    languages: string[];
 }
 
 const DoctorListing = () => {
@@ -34,7 +36,8 @@ const DoctorListing = () => {
             fee: 200,
             yearsOfExperience: 15,
             description: "Dr. Sarah Johnson is a highly skilled cardiologist specializing in the diagnosis and treatment of heart diseases. With over 15 years of experience, she is dedicated to providing personalized care to her patients.",
-            clinic: "HeartCare Specialists"
+            clinic: "HeartCare Specialists",
+            languages: ["English", "Spanish","Mandarin","French"]
         },
         {
             id: 2,
@@ -45,7 +48,8 @@ const DoctorListing = () => {
             fee: 150,
             yearsOfExperience: 10,
             description: "Dr. Michael Lee is an expert in treating various skin conditions, including acne, eczema, and skin cancers. His compassionate approach and in-depth knowledge make him a trusted name in dermatology.",
-            clinic: "SkinGlow Dermatology Center"
+            clinic: "SkinGlow Dermatology Center",
+            languages: ["English", "Korean", "Mandarin"]
         },
         {
             id: 3,
@@ -56,7 +60,8 @@ const DoctorListing = () => {
             fee: 100,
             yearsOfExperience: 8,
             description: "Dr. Priya Sharma specializes in pediatric healthcare, offering comprehensive medical care for children from infancy through adolescence. She is known for her gentle and empathetic approach.",
-            clinic: "KidsCare Pediatrics"
+            clinic: "KidsCare Pediatrics",
+            languages: ["English", "Hindi"]
         },
         {
             id: 4,
@@ -67,7 +72,8 @@ const DoctorListing = () => {
             fee: 250,
             yearsOfExperience: 20,
             description: "With two decades of experience, Dr. John Davis is a renowned orthopedic surgeon, adept at treating fractures, joint issues, and sports injuries. His precision and expertise are unparalleled.",
-            clinic: "Advanced Orthopedic Solutions"
+            clinic: "Advanced Orthopedic Solutions",
+            languages: ["English"]
         },
         {
             id: 5,
@@ -78,7 +84,8 @@ const DoctorListing = () => {
             fee: 180,
             yearsOfExperience: 12,
             description: "Dr. Emily Martinez provides expert care in women’s health, including prenatal care, fertility treatments, and menopause management. She is committed to empowering women through healthcare.",
-            clinic: "Women’s Wellness Clinic"
+            clinic: "Women’s Wellness Clinic",
+            languages: ["English", "Spanish"]
         },
         {
             id: 6,
@@ -89,7 +96,8 @@ const DoctorListing = () => {
             fee: 300,
             yearsOfExperience: 18,
             description: "Dr. Ahmed Khan is a distinguished neurologist specializing in disorders of the nervous system, such as epilepsy, migraines, and multiple sclerosis. His holistic approach ensures the best outcomes for patients.",
-            clinic: "NeuroCare Center"
+            clinic: "NeuroCare Center",
+            languages: ["English", "Urdu", "Arabic","French","Spanish","Hindi"],
         },
         {
             id: 7,
@@ -100,7 +108,8 @@ const DoctorListing = () => {
             fee: 120,
             yearsOfExperience: 5,
             description: "Dr. Linda Brooks is a compassionate general physician, offering routine check-ups and preventive care to promote overall well-being. She is known for her patient-focused approach.",
-            clinic: "City Health Clinic"
+            clinic: "City Health Clinic",
+            languages: ["English"]
         },
         {
             id: 8,
@@ -111,7 +120,8 @@ const DoctorListing = () => {
             fee: 200,
             yearsOfExperience: 14,
             description: "Dr. Chen Wei specializes in mental health, offering therapy and treatment for anxiety, depression, and other psychological disorders. His empathetic care helps patients on their journey to wellness.",
-            clinic: "MindCare Psychiatry"
+            clinic: "MindCare Psychiatry",
+            languages: ["English", "Mandarin"]
         },
         {
             id: 9,
@@ -122,7 +132,8 @@ const DoctorListing = () => {
             fee: 140,
             yearsOfExperience: 9,
             description: "Dr. Sofia Patel is an experienced ENT specialist, treating conditions related to the ear, nose, and throat. Her expertise ensures accurate diagnoses and effective treatments.",
-            clinic: "ClearSound ENT Clinic"
+            clinic: "ClearSound ENT Clinic",
+            languages: ["English", "Gujarati"]
         },
         {
             id: 10,
@@ -133,7 +144,8 @@ const DoctorListing = () => {
             fee: 100,
             yearsOfExperience: 7,
             description: "Dr. Roberto Gomez is a skilled dentist specializing in orthodontics. He provides comprehensive dental care, including braces, aligners, and routine dental check-ups.",
-            clinic: "BrightSmile Dental Care"
+            clinic: "BrightSmile Dental Care",
+            languages: ["English", "Spanish", "Portuguese"]
         },
         {
             id: 11,
@@ -144,7 +156,8 @@ const DoctorListing = () => {
             fee: 210,
             yearsOfExperience: 12,
             description: "Dr. William Parker specializes in interventional cardiology, focusing on procedures such as angioplasty and stenting to treat heart conditions.",
-            clinic: "New York Heart Institute"
+            clinic: "New York Heart Institute",
+            languages: ["English", "French"]
         },
         {
             id: 12,
@@ -155,7 +168,8 @@ const DoctorListing = () => {
             fee: 160,
             yearsOfExperience: 9,
             description: "Dr. Angela Kim has expertise in cosmetic dermatology, offering treatments like botox, fillers, and laser therapy for skin rejuvenation.",
-            clinic: "GlowDerm Aesthetics"
+            clinic: "GlowDerm Aesthetics",
+            languages: ["English", "Korean"]
         },
         {
             id: 13,
@@ -166,7 +180,8 @@ const DoctorListing = () => {
             fee: 110,
             yearsOfExperience: 7,
             description: "Dr. Ravi Menon provides comprehensive child healthcare and is known for his proactive approach to early childhood development.",
-            clinic: "Healthy Kids Pediatrics"
+            clinic: "Healthy Kids Pediatrics",
+            languages: ["English", "Malayalam", "Hindi"]
         },
         {
             id: 14,
@@ -177,7 +192,8 @@ const DoctorListing = () => {
             fee: 240,
             yearsOfExperience: 15,
             description: "Dr. Laura Scott is renowned for her expertise in joint replacement surgeries and rehabilitation programs.",
-            clinic: "OrthoPlus Center"
+            clinic: "OrthoPlus Center",
+            languages: ["English", "Spanish"]
         },
         {
             id: 15,
@@ -188,7 +204,8 @@ const DoctorListing = () => {
             fee: 190,
             yearsOfExperience: 10,
             description: "Dr. Maria Torres is passionate about women’s health and specializes in managing high-risk pregnancies.",
-            clinic: "Phoenix Women’s Health"
+            clinic: "Phoenix Women’s Health",
+            languages: ["English", "Spanish"]
         },
         {
             id: 16,
@@ -199,7 +216,8 @@ const DoctorListing = () => {
             fee: 320,
             yearsOfExperience: 22,
             description: "Dr. Samuel Peterson focuses on treating complex neurological disorders, including Parkinson’s and Alzheimer’s diseases.",
-            clinic: "NeuroMed Specialists"
+            clinic: "NeuroMed Specialists",
+            languages: ["English"]
         },
         {
             id: 17,
@@ -210,7 +228,8 @@ const DoctorListing = () => {
             fee: 125,
             yearsOfExperience: 6,
             description: "Dr. Olivia Martinez is dedicated to preventative medicine and offers health checkups tailored to individual needs.",
-            clinic: "San Francisco Health Center"
+            clinic: "San Francisco Health Center",
+            languages: ["English", "Spanish"]
         },
         {
             id: 18,
@@ -221,7 +240,8 @@ const DoctorListing = () => {
             fee: 210,
             yearsOfExperience: 13,
             description: "Dr. Emily Zhang specializes in adolescent psychiatry, helping teenagers cope with mental health challenges.",
-            clinic: "Mental Wellness Hub"
+            clinic: "Mental Wellness Hub",
+            languages: ["English", "Mandarin"]
         },
         {
             id: 19,
@@ -232,7 +252,8 @@ const DoctorListing = () => {
             fee: 150,
             yearsOfExperience: 11,
             description: "Dr. Sophia Gomez focuses on pediatric ENT cases, ensuring the best care for children with hearing and sinus issues.",
-            clinic: "Ear, Nose & Throat Care"
+            clinic: "Ear, Nose & Throat Care",
+            languages: ["English", "Spanish"]
         },
         {
             id: 20,
@@ -243,15 +264,17 @@ const DoctorListing = () => {
             fee: 120,
             yearsOfExperience: 8,
             description: "Dr. Anthony Rivera provides top-notch periodontal care, focusing on gum disease treatments and dental implants.",
-            clinic: "Rivera Dental Studio"
+            clinic: "Rivera Dental Studio",
+            languages: ["English", "Spanish", "Portuguese"]
         }
-    ];
-    const [filterMode, setFilterMode] = useState('name')
+    ]
+
+    const [filterMode, setFilterMode] = useState('speciality')
     const [filter, setFilter] = useState('');
     const [data, setData] = useState<DoctorObject[]>(doctors);
     const [showModes, setShowModes] = useState(false)
     const animValue = useRef(new Animated.Value(0)).current
-    const {setSelectedDoctor:setDoctor, selectedDoctor} = useStore(state => state)
+    const {setSelectedDoctor: setDoctor, selectedDoctor} = useStore(state => state)
 
     const useFilter = (value: string) => {
         if (value.trim() === '') {
@@ -289,8 +312,8 @@ const DoctorListing = () => {
 
 
     return (
-        <SafeAreaView style={[globalStyles.container]}>
-            <View style={globalStyles.mainView}>
+        <SafeAreaView edges={[]} style={[globalStyles.container, {backgroundColor: 'white'}]}>
+            <View style={[globalStyles.mainView,{marginTop: 0}]}>
                 <ScrollView style={[styles.Scroll]} contentContainerStyle={[styles.ScrollContent]}>
                     <Animated.View style={[styles.filterContainer, {
                         transform: [{
@@ -302,41 +325,52 @@ const DoctorListing = () => {
                     }]}>
                         {showModes &&
                             <Animated.View style={styles.modeContainer}>
-                            <TouchableOpacity onPress={() => {
-                                setFilterMode('name')
+                                <TouchableOpacity onPress={() => {
+                                    setFilterMode('name')
+                                    setFilter('')
+                                    useFilter('')
+                                    setShowModes(false)
+                                }} style={styles.modePress}>
+                                    <Text style={styles.modeText}>Name</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress={() => {
+                                    setFilterMode('speciality')
+                                    setFilter('')
+                                    useFilter('')
+                                    setShowModes(false)
+                                }} style={styles.modePress}>
+                                    <Text style={styles.modeText}>Speciality</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress={() => {
+                                    setFilterMode('location')
+                                    setFilter('')
+                                    useFilter('')
+                                    setShowModes(false)
+                                }} style={styles.modePress}>
+                                    <Text style={styles.modeText}>Location</Text>
+                                </TouchableOpacity>
+                            </Animated.View>}
+
+                        <View style={styles.searchInputContainer}>
+                            <AntDesign onPress={() => setShowModes(!showModes)} color={'lightgray'} size={20}
+                                       name={'search1'}/>
+                            <Text style={[{color: '#79c1de',fontWeight:'600'}]}>Search for:</Text>
+                            <TextInput
+                                value={filter}
+                                onChangeText={value => {
+                                    setFilter(value);
+                                    useFilter(value);
+                                }}
+                                style={[styles.textInput]}
+                                placeholderTextColor={'lightgrey'}
+                                placeholder={`${filterMode}`}
+                            />
+                            <MaterialIcons onPress={() => setShowModes(!showModes)} size={20}
+                                                    color={'lightgrey'} name={filterMode == 'name' ? 'drive-file-rename-outline' : filterMode == 'location' ? 'location-pin' : 'local-hospital'}/>
+                            <AntDesign onPress={() => {
                                 setFilter('')
-                                useFilter('')
-                                setShowModes(false)
-                            }} style={styles.modePress}>
-                                <Text style={styles.modeText}>Name</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => {
-                                setFilterMode('speciality')
-                                setFilter('')
-                                useFilter('')
-                                setShowModes(false)
-                            }} style={styles.modePress}>
-                                <Text style={styles.modeText}>Speciality</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => {
-                                setFilterMode('location')
-                                setFilter('')
-                                useFilter('')
-                                setShowModes(false)
-                            }} style={styles.modePress}>
-                                <Text style={styles.modeText}>Location</Text>
-                            </TouchableOpacity>
-                        </Animated.View>}
-                        <TextInput
-                            value={filter}
-                            onChangeText={value => {
-                                setFilter(value);
-                                useFilter(value);
-                            }}
-                            style={styles.searchInput}
-                            placeholder={`Search by ${filterMode}`}
-                        />
-                        <Feather onPress={() => setShowModes(!showModes)} color={'grey'} size={20} name={'filter'}/>
+                            }} color={'black'} size={18} name={'close'}/>
+                        </View>
                     </Animated.View>
                     <Animated.View style={[styles.listContainer, {
                         transform: [{
@@ -346,6 +380,14 @@ const DoctorListing = () => {
                             })
                         }]
                     }]}>
+                        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}
+                                    contentContainerStyle={{height: 50, flexDirection: 'row', marginTop: 10, gap: 10,paddingHorizontal:10}}>
+                            <CouponAd label={'cashback on mobikwik wallet'} header={'250'}/>
+                            <CouponAd label={'cashback on mobikwik wallet'} header={'100'}/>
+                            <CouponAd label={'cashback on mobikwik wallet'} header={'50'}/>
+
+                        </ScrollView>
+                        <Text style={[styles.text]}>Showing earliest available doctors</Text>
                         {data.length > 0 ? (
                             data.map(item => (
                                 <DoctorCard selected={selectedDoctor == item} onPress={() => {
@@ -354,10 +396,13 @@ const DoctorListing = () => {
                                         params: {doctor: JSON.stringify(item)}
                                     })
                                 }} doctor={item} key={item.id}
-                                selectDoctor={()=>setDoctor(item)} />
+                                            selectDoctor={() => setDoctor(item)}/>
                             ))
                         ) : (
-                            <Text style={styles.noResult}>No doctors found</Text>
+                            <View style={{height:screenHeight/2,justifyContent:'center',alignItems:'center'}}>
+                            <Text style={styles.noResult}>No doctors available</Text>
+
+                            </View>
                         )}
                     </Animated.View>
                 </ScrollView>
@@ -369,18 +414,32 @@ const DoctorListing = () => {
 export default DoctorListing;
 
 const styles = StyleSheet.create({
-    searchInput: {
+    searchInputContainer: {
         width: '90%',
-        borderWidth: StyleSheet.hairlineWidth,
+        // borderWidth: StyleSheet.hairlineWidth,
         borderColor: 'lightGrey',
-        padding: 8,
-        borderRadius: 8,
+        padding: 10,
+        borderRadius: 50,
+        backgroundColor: 'white',
+        shadowColor: 'black',
+        shadowOpacity: 0.4,
+        shadowOffset: {width: 0, height: 0},
+        shadowRadius: 5,
+        flexDirection: 'row',
+        gap: 5,
+        alignItems: 'center',
+        elevation:5
+    },
+    textInput: {
+        flex: 1,
+        fontSize:14
     },
     listContainer: {
-        zIndex:-1,
+        zIndex: -1,
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop: 30
+        backgroundColor: '#f2f5f9',
+        // paddingTop: 30
     },
     doctorName: {
         fontSize: 16,
@@ -399,20 +458,26 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         gap: 5,
+        paddingVertical: 20,
+        // borderWidth: 1,
+        backgroundColor: 'white',
     },
     ScrollContent: {
         paddingBottom: 100,
+        // borderWidth: 1,
+        width: '100%',
     },
     Scroll: {
-        width: '100%',
+        width: screenWidth,
+        // borderWidth: 1,
     },
     modeContainer: {
         position: 'absolute',
         backgroundColor: 'white',
         flex: 1,
         width: screenWidth / 3,
-        top: 10,
-        right: 25,
+        top: '100%',
+        right: 70,
         zIndex: 3,
         borderRadius: 10,
         borderTopEndRadius: 0,
@@ -434,5 +499,13 @@ const styles = StyleSheet.create({
         borderBottomWidth: StyleSheet.hairlineWidth,
         borderRadius: 10,
 
+    },
+    text:{
+        fontSize: 15,
+        textAlign: 'left',
+        width: '100%',
+        marginTop: 25,
+        marginLeft: 30,
+        fontWeight:'600'
     }
 });
