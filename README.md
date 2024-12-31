@@ -66,7 +66,7 @@ The filter button at the top right of the screen toggles the filter box where th
 - Location: Searches doctors based on their Location.
 
 The doctor list changes as the input field's value is changed. The placeholder for the input field also changes its value to show the user what the current filter is.
-
+# New ListCard Design
  <Div>
 <img width=500 src="./readmeImages/filter.png"/>
 <img width=500 src="./readmeImages/newList.png"/>
